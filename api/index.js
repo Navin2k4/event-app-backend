@@ -37,8 +37,8 @@ app.use((err, req, res, next) => {
     await sequelize.authenticate();
     console.log('MySQL connection established successfully.');
     await sequelize.sync(); 
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
-    const adminPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
+    const adminEmail = process.env.ADMIN_EMAIL ;
+    const adminPassword = process.env.ADMIN_PASSWORD ;
 
     const existingAdmin = await User.findOne({ where: { email: adminEmail } });
 
@@ -62,7 +62,7 @@ app.use((err, req, res, next) => {
   }
 })();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
